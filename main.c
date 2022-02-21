@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-void handleInput(char input[]);
+void handleCalenderInput();
 void printYearCalendar(int year);
 void printMonthCalendar(int *firstDayOfMonth, int month, int year);
 int dayOftheWeek(int y, int m, int d);
@@ -11,12 +11,49 @@ char *getMonthName(int monthNumber);
 int main()
 {
     printf("\n          Welcome to Calender\n");
+    int flag = 1;
+    while (flag)
+    {
+        char input[20];
+        printf("cal -> to see calendar.\n");
+        printf("exit -> to exit program.\n> ");
+        scanf("%s", input);
 
-    // printYearCalendar(2022);
-    int firstDayOfMonth = dayOftheWeek(1, 02, 2022);
-    printMonthCalendar(&firstDayOfMonth, 02, 2022);
+        if (!strcmp(input, "cal"))
+        {
+            handleCalenderInput();
+        }
+        else
+        {
+            flag = 0;
+        }
+    }
 
     return 0;
+}
+
+void handleCalenderInput()
+{
+    int choice, month, year;
+    printf("1 - to see Calendar of month\n");
+    printf("2 - to see Calendar of whole year\n> ");
+    scanf("%d", &choice);
+
+    if (choice == 1)
+    {
+        printf("Enter Year -> ");
+        scanf("%d", &year);
+        printf("Enter Month -> ");
+        scanf("%d", &month);
+        int firstDayOfMonth = dayOftheWeek(1, 02, 2022);
+        printMonthCalendar(&firstDayOfMonth, 02, 2022);
+    }
+    else
+    {
+        printf("Enter Year -> ");
+        scanf("%d", &year);
+        printYearCalendar(year);
+    }
 }
 
 void printYearCalendar(int year)
