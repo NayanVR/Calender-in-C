@@ -45,8 +45,8 @@ void handleCalenderInput()
         scanf("%d", &year);
         printf("Enter Month -> ");
         scanf("%d", &month);
-        int firstDayOfMonth = dayOftheWeek(1, 02, 2022);
-        printMonthCalendar(&firstDayOfMonth, 02, 2022);
+        int firstDayOfMonth = dayOftheWeek(year, month, 01);
+        printMonthCalendar(&firstDayOfMonth, month, year);
     }
     else
     {
